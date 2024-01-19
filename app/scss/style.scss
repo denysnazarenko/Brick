@@ -45,9 +45,6 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-
-    // потім видали background
-    background: rgb(141, 145, 130);
   }
 
   &__logo {
@@ -193,7 +190,7 @@ body {
         top: 0;
         left: 0;
         @include adaptiv-value('height', 75, 60, 1);
-        background: rgb(141, 145, 130);
+        background: rgb(135, 140, 146);
       }
       &._active {
         top: 0;
@@ -214,7 +211,171 @@ body {
 
 /* ------------------------------------ */
 
+.main {
+  background: url(../images/main/background.png) 0 0/cover no-repeat;
+  &__container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include adaptiv-value('gap', 70, 15, 1);
+    @include adaptiv-value('padding-top', 100, 80, 1);
+    @include adaptiv-value('padding-bottom', 50, 20, 1);
+  }
 
+  &__body {}
+
+  &__form {}
+}
+
+.body-main {
+  &__title {
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 600;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 35, 20, 1);
+    }
+  }
+
+  &__text {
+    color: #FFF;
+    font-size: 14px;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 60, 20, 1);
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    color: #000;
+    font-weight: 500;
+    padding: 16px 39px;
+    justify-content: center;
+    align-items: center;
+    background: #FF9A23;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      background: #ff8800;
+    }
+  }
+}
+
+.form-main {
+  background: rgba(0, 0, 0, 0.40);
+  @include adaptiv-value('padding', 40, 20, 1);
+  @include adaptiv-value('margin-right', -40, 0, 1);
+  &__title {
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 96.4%;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 20, 15, 1);
+    }
+  }
+
+  &__subtitle {
+    color: #FFF;
+    line-height: 96.4%;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 30, 20, 1);
+    }
+  }
+
+  &__form {
+    @include adaptiv-value('width', 400, 250, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__name {
+    background-color: transparent;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    padding: 13px 20px;
+    color: rgba(255, 255, 255, 0.70);
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 14px;
+      line-height: 96.4%;
+    }
+  }
+
+  &__tel {
+    background-color: transparent;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    padding: 13px 20px;
+    color: rgba(255, 255, 255, 0.70);
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 14px;
+      line-height: 96.4%;
+    }
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 20, 0, 1);
+    }
+  }
+
+  &__button {
+    max-width: 120px;
+    color: #FFF;
+    text-align: left;
+    padding: 12px 2px;
+    font-weight: 700;
+    background-color: transparent;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: 5px;
+      width: 21px;
+      height: 20px;
+      background: url(../images/main/icons/arrow.svg) no-repeat;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .body-main {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main {
+    &__container {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .body-main {
+    &__title {
+      font-size: 32px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .body-main {
+    &__title {
+      font-size: 24px;
+    }
+  }
+  .form-main {
+    &__title {
+      font-size: 18px;
+    }
+    &__subtitle {
+      font-size: 14px;
+    }
+  }
+}
 
 /* ------------------------------------ */
 /* ------------------------------------ */
