@@ -25,6 +25,24 @@ body {
   flex: 1 1 auto;
 }
 
+.title {
+  color: #FF9A23;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+  padding-bottom: 23px;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 101px;
+    height: 1px;
+    background-color: #FF9A23;
+  }
+}
+
 [class*="__container"] {
   max-width: 1095px;
   margin: 0 auto;
@@ -221,6 +239,16 @@ body {
     @include adaptiv-value('gap', 70, 15, 1);
     @include adaptiv-value('padding-top', 100, 80, 1);
     @include adaptiv-value('padding-bottom', 50, 20, 1);
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 15px;
+      width: 46px;
+      height: 24px;
+      background: url(../images/main/icons/decor-arrow.svg) no-repeat;
+    }
   }
 
   &__body {}
@@ -378,6 +406,86 @@ body {
 }
 
 /* ------------------------------------ */
+
+.aboutus {
+  @include adaptiv-value('padding-top', 80, 30, 1);
+  @include adaptiv-value('padding-bottom', 40, 30, 1);
+  &__container {}
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__content {
+    display: flex;
+    @include adaptiv-value('gap', 54, 20, 1);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__body {}
+
+  &__image {}
+}
+
+.body-aboutus {
+  &__title {
+    font-size: 30px;
+    font-weight: 600;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 35, 20, 1);
+    }
+  }
+
+  &__text {
+    p {
+      &:not(:last-child) {
+        @include adaptiv-value('margin-bottom', 25, 15, 1);
+      }
+    }
+  }
+}
+
+.image-aboutus {
+  &__title {
+    color: rgba(0, 0, 0, 0.50);
+    font-weight: 500;
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 900px) {
+  .body-aboutus {
+    max-width: 518px;
+  }
+}
+
+@media (max-width: 900px) {
+  .aboutus {
+    &__content {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .body-aboutus {
+    &__title {
+      font-size: 20px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+  }
+}
+
 /* ------------------------------------ */
 /* ------------------------------------ */
 /* ------------------------------------ */
