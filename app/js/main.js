@@ -65,4 +65,41 @@ window.addEventListener('DOMContentLoaded', () => {
     focusInput(basicInputPhone);
   });
 
+  // Tabs
+  const tabs = document.querySelectorAll('.header-tab-products__item'),
+    tabsContent = document.querySelectorAll('.content-tab-products__items'),
+    tabsParent = document.querySelector('.header-tab-products__items');
+
+  function hideTabContent() {
+    tabsContent.forEach(item => {
+      item.classList.add('hide');
+      item.classList.remove('show', 'fade');
+    });
+
+    tabs.forEach(item => {
+      item.classList.remove('header-tab-products__item_active');
+    })
+  }
+
+  function showTabContent(i = 0) {
+    tabsContent[i].classList.add('show', 'fade');
+    tabsContent[i].classList.remove('hide');
+    tabs[i].classList.add('header-tab-products__item_active');
+  }
+
+  hideTabContent();
+  showTabContent();
+
+  tabsParent.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (target && target.classList.contains('header-tab-products__item')) {
+      tabs.forEach((item, i) => {
+        if (target == item) {
+          hideTabContent();
+          showTabContent(i);
+        }
+      });
+    }
+  });
 });
