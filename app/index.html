@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brick</title>
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -389,10 +390,43 @@
           <a href="#" class="products__button">Скачать прайс-лист</a>
         </div>
       </section>
+      <section class="page__work work">
+        <div class="work__container">
+          <h3 class="work__title title">НАШИ РАБОТЫ</h3>
+          <!-- Slider main container -->
+          <div class="work__slider slider-work swiper">
+            <!-- Additional required wrapper -->
+            <div class="slider-work__wrapper swiper-wrapper">
+              <!-- Slides -->
+              <div class="slider-work__slide swiper-slide">
+                <div class="slider-work__image">
+                  <img src="images/work/slider-image1.png" alt="Image">
+                </div>
+              </div>
+              <div class="slider-work__slide swiper-slide">
+                <div class="slider-work__image">
+                  <img src="images/work/slider-image2.png" alt="Image">
+                </div>
+              </div>
+              <div class="slider-work__slide swiper-slide">
+                <div class="slider-work__image">
+                  <img src="images/work/slider-image1.png" alt="Image">
+                </div>
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="slider-work__pagination swiper-pagination"></div>
+            <!-- If we need navigation buttons -->
+              <div class="slider-work__button-prev swiper-button-prev"></div>
+              <div class="slider-work__button-next swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="footer"></footer>
   </div>
   
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 

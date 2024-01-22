@@ -102,4 +102,47 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  // Слайдер
+  const swiper = new Swiper('.work__slider', {
+    // Optional parameters
+    loop: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // Кількість слайдів
+    slidesPerView: 1,
+
+    // Відступ між слайдами
+    spaceBetween: 18,
+
+    // Активний слайд
+    centeredSlides: true,
+
+    // Автопрокрутка
+    autoplay: {
+      delay: 3000
+    },
+
+    speed: 1600,
+
+    // Адаптив
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 'auto',
+    //   },
+    //   1200: {
+    //     slidesPerView: 2
+    //   }
+    // }
+  });
 });
