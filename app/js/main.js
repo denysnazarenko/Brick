@@ -145,4 +145,52 @@ window.addEventListener('DOMContentLoaded', () => {
     //   }
     // }
   });
+
+  // Модальне вікно
+  const modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]'),
+        modalBuyBtn = modal.querySelector('.modal__button');
+
+  function openModal() {
+    modal.classList.add('show__modal');
+    modal.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeModal() {
+    modal.classList.add('hide');
+    modal.classList.remove('show__modal');
+    document.body.style.overflow = '';
+  };
+
+  tabsContent.forEach(element => {
+    element.addEventListener('click', (e) => {
+      const target = e.target;
+
+      if (target && target.classList.contains('content-tab-products__button')) {
+        e.preventDefault();
+        openModal();
+      }
+    })
+  });
+
+  modalCloseBtn.addEventListener('click', closeModal);
+
+  modalBuyBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeModal();
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === "Escape" && modal.classList.contains('show__modal')) {
+      closeModal();
+    }
+  });
+
 });
