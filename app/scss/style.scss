@@ -43,6 +43,20 @@ body {
   }
 }
 
+.button {
+  display: inline-block;
+  color: #000;
+  font-weight: 500;
+  padding: 16px 39px;
+  justify-content: center;
+  align-items: center;
+  background: #FF9A23;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    background: #ff8800;
+  }
+}
+
 [class*="__container"] {
   max-width: 1095px;
   margin: 0 auto;
@@ -280,19 +294,7 @@ body {
     }
   }
 
-  &__button {
-    display: inline-block;
-    color: #000;
-    font-weight: 500;
-    padding: 16px 39px;
-    justify-content: center;
-    align-items: center;
-    background: #FF9A23;
-    transition: all 0.3s ease 0s;
-    &:hover {
-      background: #ff8800;
-    }
-  }
+  &__button {}
 }
 
 .form-main {
@@ -361,6 +363,7 @@ body {
     font-weight: 700;
     background-color: transparent;
     position: relative;
+    transition: all 0.3s ease 0s;
     &::before {
       content: '';
       position: absolute;
@@ -369,6 +372,9 @@ body {
       width: 21px;
       height: 20px;
       background: url(../images/main/icons/arrow.svg) no-repeat;
+    }
+    &:hover {
+      color: #ffffffb9;
     }
   }
 }
@@ -511,18 +517,7 @@ body {
   &__tab {}
 
   &__button {
-    display: inline-block;
     align-self: center;
-    color: #000;
-    font-weight: 500;
-    padding: 16px 39px;
-    justify-content: center;
-    align-items: center;
-    background: #FF9A23;
-    transition: all 0.3s ease 0s;
-    &:hover {
-      background: #ff8800;
-    }
   }
 }
 
@@ -729,6 +724,160 @@ body {
 }
 
 /* ------------------------------------ */
+
+.application {
+  @include adaptiv-value('padding-top', 40, 30, 1);
+  @include adaptiv-value('padding-bottom', 50, 30, 1);
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    @include adaptiv-value('gap', 30, 20, 1);
+  }
+
+  &__body {}
+
+  &__image {}
+}
+
+.body-application {
+  @include adaptiv-value('width', 460, 250, 1);
+  &__title {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 96.4%;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 23, 15, 1);
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 96.4%;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 30, 20, 1);
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__name {
+    background-color: transparent;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 13px 20px;
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 14px;
+    line-height: 96.4%;
+  }
+
+  &__tel {
+    background-color: transparent;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 13px 20px;
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 14px;
+    line-height: 96.4%;
+  }
+
+  &__comment {
+    @include adaptiv-value('height', 150, 100, 1);
+    background-color: transparent;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 13px 20px;
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 14px;
+    line-height: 96.4%;
+  }
+
+  &__button {
+    max-width: 120px;
+    color: #000;
+    text-align: left;
+    padding: 12px 2px;
+    font-weight: 700;
+    background-color: transparent;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: 5px;
+      width: 21px;
+      height: 20px;
+      background: url(../images/application/icons/arrow.svg) no-repeat;
+    }
+    &:hover {
+      color: #0000009f;
+    }
+  }
+}
+
+.image-application {
+  &__img {
+    position: relative;
+    &:not(:last-child) {
+      @include adaptiv-value('margin-bottom', 56, 20, 1);
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+  
+  &__text {
+    position: absolute;
+    padding: 15px;
+    top: 20%;
+    left: 10%;
+    color: #FFF;
+    @include adaptiv-value('font-size', 40, 24, 1);
+    font-weight: 600;
+  }
+
+  &__button {}
+}
+
+@media (min-width: 900px) {
+  .body-application {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .application {
+    &__container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .image-application {
+    display: flex;
+    flex-direction: column;
+    &__text {
+      top: 15%;
+      left: 5%;
+    }
+    &__button {
+      align-self: center;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .image-application {
+    &__text {
+      top: 5%;
+    }
+  }
+}
+
 /* ------------------------------------ */
 /* ------------------------------------ */
 /* ------------------------------------ */

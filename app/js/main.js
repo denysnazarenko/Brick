@@ -65,6 +65,46 @@ window.addEventListener('DOMContentLoaded', () => {
     focusInput(basicInputPhone);
   });
 
+  // Second Application Form
+
+  const extendedForm = document.querySelector('.body-application__form'),
+    extendedInputName = document.querySelector('.body-application__name'),
+    extendedInputPhone = document.querySelector('.body-application__tel'),
+    extendedTextareaComment = document.querySelector('.body-application__comment'),
+    extendedButtonSubmit = document.querySelector('.body-application__button');
+
+  const extendedUserData = {
+    userName: '',
+    userPhone: '',
+    userComment: ''
+  };
+
+  extendedButtonSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (extendedInputName.value != '') {
+      extendedUserData.userName = extendedInputName.value;
+    } else {
+      emptyInput(extendedInputName);
+    }
+    if (extendedInputPhone.value != '' && extendedInputPhone.value.match(/^[0-9]+$/) != null) {
+      extendedUserData.userPhone = extendedInputPhone.value;
+    } else {
+      emptyInput(extendedInputPhone);
+    }
+    if (extendedTextareaComment.value != '') {
+      extendedUserData.userComment = extendedTextareaComment.value;
+    }
+
+    if (extendedInputName.value != '' && extendedInputPhone.value != '' && extendedInputPhone.value.match(/^[0-9]+$/) != null) {
+      extendedForm.reset();
+      alert(`Ласкаво просимо ${extendedUserData.userName}`);
+      console.log(extendedUserData);
+    }
+
+    focusInput(extendedInputName);
+    focusInput(extendedInputPhone);
+  });
+
   // Tabs
   const tabs = document.querySelectorAll('.header-tab-products__item'),
     tabsContent = document.querySelectorAll('.content-tab-products__items'),
