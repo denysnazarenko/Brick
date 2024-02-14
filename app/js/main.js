@@ -22,87 +22,66 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // Application Form
-  const basicForm = document.querySelector('.form-main__form'),           
-        basicInputName = document.querySelector('.form-main__name'),
-        basicInputPhone = document.querySelector('.form-main__tel'),
-        basicButtonSubmit = document.querySelector('.form-main__button');
+  const forms = document.querySelectorAll('form'),
+        phoneInputs = document.querySelectorAll('input[name="phone"]');
 
-  const userData = {
-      userName: '', 
-      userPhone: ''
-  };
+  phoneInputs.forEach(item => {
+    item.addEventListener('input', () => {
+      item.value = item.value.replace(/\D/gm, '');
+    });
+  });
 
-  const emptyInput = function (input) {
-    input.style.cssText = 'border: 1px solid rgb(228, 56, 56); box-shadow: 0px 0px 10px rgb(228, 56, 56)';
-  };
-  const focusInput = function (input) {
+  function focusInput(input) {
     input.addEventListener('focus', () => {
-      input.style.cssText = 'border: 1px solid rgba(255, 255, 255, 0.70); box-shadow: none';
+      input.classList.remove('empty-input');
       input.value = '';
     })
   };
 
-  basicButtonSubmit.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (basicInputName.value != '') {
-      userData.userName = basicInputName.value;
-    } else {
-      emptyInput(basicInputName);
+  function emptyInput(input) {
+    if (input.value == '') {
+      input.classList.add('empty-input');
     }
-    if (basicInputPhone.value != '' && basicInputPhone.value.match(/^[0-9]+$/) != null) {
-      userData.userPhone = basicInputPhone.value;
-    } else {
-      emptyInput(basicInputPhone);
-    }
+  }
 
-    if (basicInputName.value != '' && basicInputPhone.value != '' && basicInputPhone.value.match(/^[0-9]+$/) != null) {
-      basicForm.reset();
-      alert(`Ласкаво просимо ${userData.userName}`);
-      console.log(userData);
-    }
+  const postData = async (url, data) => {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: data
+    });
 
-    focusInput(basicInputName);
-    focusInput(basicInputPhone);
-  });
-
-  // Second Application Form
-
-  const extendedForm = document.querySelector('.body-application__form'),
-    extendedInputName = document.querySelector('.body-application__name'),
-    extendedInputPhone = document.querySelector('.body-application__tel'),
-    extendedTextareaComment = document.querySelector('.body-application__comment'),
-    extendedButtonSubmit = document.querySelector('.body-application__button');
-
-  const extendedUserData = {
-    userName: '',
-    userPhone: '',
-    userComment: ''
+    return await res.json();
   };
+  
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-  extendedButtonSubmit.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (extendedInputName.value != '') {
-      extendedUserData.userName = extendedInputName.value;
-    } else {
-      emptyInput(extendedInputName);
-    }
-    if (extendedInputPhone.value != '' && extendedInputPhone.value.match(/^[0-9]+$/) != null) {
-      extendedUserData.userPhone = extendedInputPhone.value;
-    } else {
-      emptyInput(extendedInputPhone);
-    }
-    if (extendedTextareaComment.value != '') {
-      extendedUserData.userComment = extendedTextareaComment.value;
-    }
+      const nameInput = form.querySelector('[name="name"]'),
+            phoneInput = form.querySelector('[name="phone"]');
+      
+      emptyInput(nameInput);
+      emptyInput(phoneInput);
+      focusInput(nameInput);
+      focusInput(phoneInput);
 
-    if (extendedInputName.value != '' && extendedInputPhone.value != '' && extendedInputPhone.value.match(/^[0-9]+$/) != null) {
-      extendedForm.reset();
-      alert(`Ласкаво просимо ${extendedUserData.userName}`);
-      console.log(extendedUserData);
-    }
-
-    focusInput(extendedInputName);
-    focusInput(extendedInputPhone);
+      if (nameInput.value != '' && phoneInput.value != '') {
+        const formData = new FormData(form);
+        const json = JSON.stringify(Object.fromEntries(formData.entries()));
+        
+        postData('http://localhost:3000/requests', json)
+          .then(data => {
+            console.log(data);
+          }).catch(() => {
+            console.log('Щось пішло не так');
+          }).finally(() => {
+            form.reset();
+          });
+      }
+    });
   });
 
   // Tabs

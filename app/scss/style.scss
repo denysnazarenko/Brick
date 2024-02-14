@@ -793,6 +793,7 @@ body {
     color: rgba(0, 0, 0, 0.60);
     font-size: 14px;
     line-height: 96.4%;
+    resize: none;
   }
 
   &__button {
@@ -878,7 +879,13 @@ body {
   }
 }
 
+.empty-input {
+  border: 1px solid rgb(228, 56, 56);
+  box-shadow: 0px 0px 10px rgb(228, 56, 56);
+}
+
 /* ------------------------------------ */
+
 
 .footer {
   &__container {
